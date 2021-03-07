@@ -1,0 +1,35 @@
+{
+  "name": "XToken.tz",
+  "version": "1.0.0",
+  "description": "XToken.tz is a digital security token compliant with FA 1.2 token standard",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha || true",
+    "compile": "docker run --rm -v \"$PWD:$PWD\" -w \"$PWD\" ligolang/ligo:0.9.0 compile-contract ./src/XToken.tz.ligo main > build/XToken.tz || true"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "standard": {
+    "env": [
+      "mocha"
+    ],
+    "globals": [
+      "artifacts",
+      "assert",
+      "contract"
+    ]
+  },
+  "devDependencies": {
+    "@taquito/signer": "^8.0.3-beta.0",
+    "@taquito/taquito": "^8.0.3-beta.0",
+    "bignumber.js": "^9.0.1",
+    "chai": "^4.3.1",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "faker": "^5.4.0",
+    "mocha": "^8.3.0",
+    "standard": "^16.0.3"
+  }
+}
