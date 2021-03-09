@@ -28,7 +28,6 @@
  * and therefore cannot be added to or removed from the admin list.
 **************************************************************************************)
 
-
 (*
 * Checks if an address is an administrator.
 *
@@ -48,7 +47,6 @@ begin
     admin := Big_map.mem (account, s.admins);
   }
 end with admin
-
 
 (*
 * Adds the specified address to the list of administrators.
