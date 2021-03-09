@@ -56,3 +56,7 @@ mocha
 | .env | Environment variables |
 | env.json | Environment variables override |
 
+## Development Environment
+
+We recommend VSCode for the development:  
+https://code.visualstudio.com/

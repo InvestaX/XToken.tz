@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "ligolang-publish.ligo-vscode",
+    "chenxsan.vscode-standardjs",
+    "hbenl.vscode-mocha-test-adapter"
+  ]
+}
