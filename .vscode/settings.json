@@ -1,11 +1,9 @@
 {
     "javascript.suggestionActions.enabled": false,
-    "typescript.preferences.importModuleSpecifier": "non-relative",
     "standard.usePackageJson": true,
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
     "json.format.enable": true,
-    // "editor.formatOnSave": true,
     "[json]": {
         "editor.formatOnSave": true,
         "editor.tabSize": 2,
@@ -13,7 +11,7 @@
     },
     "terminal.integrated.scrollback": 10000,
     "files.associations": {
-        "*.ligo.x": "ligo"
+        "*.ligo": "ligo"
     },
     "editor.defaultFormatter": "vscode.typescript-language-features",
     "standard.autoFixOnSave": true,
