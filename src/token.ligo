@@ -21,21 +21,21 @@
  * limitations under the License.
  *
  *
- * All storage variables can be found here.
+ * The token contract contains functionality related to token details
 **************************************************************************************)
 
-type account is record
-  balance : nat;
-  allowances: map(address, nat);
-end
+(*
+* Gets the token symbol of this digital security.
+*
+* s -> Storage
+*)
+function getSymbol (const contr : contract(string) ; var s : storage) : list(operation) is
+ list [transaction(s.symbol, 0tz, contr)]
 
-type storage is record
-  owner: address;
-  totalSupply: nat;
-  name: string;
-  symbol: string;
-  ledger: big_map(address, account);
-  whitelist: big_map(address, string);
-  admins: big_map(address, string);
-  lockingList: big_map(address, timestamp);
-end
+(*
+* Gets the token name of this digital security.
+*
+* s -> Storage
+*)
+function getName (const contr : contract(string) ; var s : storage) : list(operation) is
+  list [transaction(s.name, 0tz, contr)]

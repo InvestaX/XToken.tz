@@ -9,6 +9,8 @@ const originate = async (owner) => {
   const origination = await Tezos.contract.originate({
     code,
     storage: {
+      name: 'InvestaX Preferred Stock',
+      symbol: 'IXPS',
       owner: owner.pkh,
       totalSupply: 0,
       ledger: new MichelsonMap(),

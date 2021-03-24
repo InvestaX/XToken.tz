@@ -26,4 +26,9 @@ describe('XToken.tz Origination', () => {
     storage.totalSupply.should.be.bignumber
     storage.totalSupply.toString().should.equal('0')
   })
+
+  it('must correctly set the token name and symbol', async () => {
+    storage.name.should.equal('InvestaX Preferred Stock')
+    storage.symbol.should.equal('IXPS')
+  })
 })
