@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha || true",
-    "compile": "sudo docker run --rm -v \"$PWD:$PWD\" -w \"$PWD\" ligolang/ligo:0.9.0 compile-contract ./src/XToken.tz.ligo main > build/XToken.tz || true"
+    "compile": "sudo docker run --rm -v \"$PWD:$PWD\" -w \"$PWD\" ligolang/ligo:0.9.0 compile-contract ./src/XToken.tz.ligo main > build/XToken.tz || true",
+    "compile-windows": "docker run --rm -v \"%CD%\":/cd -w /cd ligolang/ligo:0.14.0 compile-contract ./src/XToken.tz.ligo main > build/XToken.tz"
   },
   "keywords": [],
   "author": "",
