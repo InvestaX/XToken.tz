@@ -13,4 +13,5 @@ const getAdmin = async (storage, account) => {
 const getWhiteList = async (storage, account) => {
   return storage.whitelist.get(account)
 }
+
 module.exports = { toUnix, getLedger, getAdmin, getWhiteList }

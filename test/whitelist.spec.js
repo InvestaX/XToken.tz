@@ -6,6 +6,7 @@ const XTokenTZ = require('./helpers/token')
 const { toUnix, getWhiteList } = require('./utils')
 const assert = require('assert')
 const expect = require('chai').expect
+
 describe('Whitelist Functionality', () => {
   let storage
   let config
@@ -16,6 +17,7 @@ describe('Whitelist Functionality', () => {
     initial: 50000000,
     transfers: [30000, 1000]
   }
+
   const id = faker.random.uuid()
 
   before(async () => {
@@ -45,6 +47,7 @@ describe('Whitelist Functionality', () => {
     const operation = await security.methods.removeFromWhitelist(accounts.bob.pkh).send()
     await operation.confirmation(1)
   })
+  
   it('checking if bob is still whitelisted or not', async () => {
     const bobWhitelistId = await getWhiteList(storage, accounts.bob.pkh)
     expect(bobWhitelistId).to.be.undefined
@@ -65,7 +68,7 @@ describe('Whitelist Functionality', () => {
       operation = await security.methods.transfer(alice.pkh, bob.pkh, amounts.transfers[0]).send()
       await operation.confirmation(1)
 
-      throw new Error('Expected an error and didn\'t get one!')
+      assert.fail("")
     } catch (err) {
       const expected = 'Not in the whitelist'
       assert.equal(err.message, expected)
