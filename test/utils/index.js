@@ -10,4 +10,8 @@ const getAdmin = async (storage, account) => {
   return storage.admins.get(account)
 }
 
-module.exports = { toUnix, getLedger, getAdmin }
+const getWhiteList = async (storage, account) => {
+  return storage.whitelist.get(account)
+}
+
+module.exports = { toUnix, getLedger, getAdmin, getWhiteList }

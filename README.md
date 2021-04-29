@@ -32,6 +32,12 @@ npm install
 npm run compile
 ```
 
+**FOR WINDOWS**
+
+```
+npm run compile-windows
+```
+
 **Run Tests**
 
 ```

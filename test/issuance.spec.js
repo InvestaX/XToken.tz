@@ -33,7 +33,7 @@ describe('Digital Security Issuances', () => {
     const contract = await XTokenTZ.at(security.address, alice)
     const operation = await contract.methods.issue(beneficiary, id, amount, releaseDate, withWhitelist).send()
     await operation.confirmation(1)
-
+    
     const [idDiff, releaseDateDiff, amountDiff] = operation.results[0].metadata.operation_result.big_map_diff
 
     idDiff.value.string.should.equal(id)

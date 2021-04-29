@@ -51,7 +51,7 @@ list [transaction (ifWhitelisted (account, s), 0tz, contr)];
 * Adds the specified account and identifier to the whitelist.
 *
 * account -> The address to whitelist.
-* account -> The account identifier
+* id -> The account identifier
 * s -> Storage
 *
 * Note that this feature is restricted for admin use only.
