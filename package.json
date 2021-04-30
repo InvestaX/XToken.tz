@@ -32,5 +32,8 @@
     "faker": "^5.4.0",
     "mocha": "^8.3.0",
     "standard": "^16.0.3"
+  },
+  "dependencies": {
+    "@taquito/tzip16": "^9.0.0"
   }
 }

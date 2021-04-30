@@ -38,4 +38,5 @@ type storage is record
   whitelist: big_map(address, string);
   admins: big_map(address, string);
   lockingList: big_map(address, timestamp);
+  metadata : big_map(string, bytes);
 end
