@@ -32,8 +32,6 @@ end
 type storage is record
   owner: address;
   totalSupply: nat;
-  name: string;
-  symbol: string;
   ledger: big_map(address, account);
   whitelist: big_map(address, string);
   admins: big_map(address, string);

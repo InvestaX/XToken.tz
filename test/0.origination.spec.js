@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
+const { bytes2Char } = require('@taquito/utils')
 const { getConfig } = require('../config')
 const XTokenTZ = require('./helpers/token')
 
@@ -27,8 +28,12 @@ describe('XToken.tz Origination', () => {
     storage.totalSupply.toString().should.equal('0')
   })
 
-  it('must correctly set the token name and symbol', async () => {
-    storage.name.should.equal('InvestaX Preferred Stock')
-    storage.symbol.should.equal('IXPS')
+  it('must correctly set the token name and symbol in metadata', async () => {
+    const contents = await storage.metadata.get('contents')
+    const metadata = JSON.parse(bytes2Char(contents))
+
+    metadata.name.should.equal('InvestaX Preferred Stock')
+    metadata.symbol.should.equal('IXPS')
+    metadata.decimals.should.equal(2)
   })
 })
