@@ -20,6 +20,11 @@ docker run --rm --name my-sandbox --detach -p 20000:20000 tqtezos/flextesa:20210
 docker run --rm tqtezos/flextesa:20210216 edobox info
 ```
 
+If you want to shut down the sandbox
+```
+docker kill my-sandbox
+```
+
 **Install Dependencies**
 
 ```
@@ -32,7 +37,7 @@ npm install
 npm run compile
 ```
 
-**FOR WINDOWS**
+If you are using windows, then use
 
 ```
 npm run compile-windows

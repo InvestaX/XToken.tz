@@ -6,7 +6,6 @@
 #include "balance.ligo"
 #include "issuance.ligo"
 #include "redemption.ligo"
-#include "token.ligo"
 
 type action is
 | Transfer of (address * address * nat)
@@ -17,8 +16,6 @@ type action is
 | GetAllowance of (address * address * contract(nat))
 | GetBalance of (address * contract(nat))
 | GetTotalSupply of (unit * contract(nat))
-| GetName of (unit * contract(string))
-| GetSymbol of (unit * contract(string))
 | IsWhitelisted of (address * contract(bool))
 | AddToWhitelist of (address * string)
 | RemoveFromWhitelist of (address)
@@ -41,8 +38,6 @@ block {
   | AddAdmin(n) -> ((nil : list(operation)), addAdmin(n.0, n.1, s))
   | RemoveAdmin(n) -> ((nil : list(operation)), removeAdmin(n, s))
   | GetTotalSupply(n) -> (getTotalSupply(n.1, s), s)
-  | GetName(n) -> (getName(n.1, s), s)
-  | GetSymbol(n) -> (getSymbol(n.1, s), s)
   | Issue(n) -> ((nil : list(operation)), issue(n.0, n.1, n.2, n.3, n.4, s))
   | Redeem(n) -> ((nil : list(operation)), redeem(n.0, n.1, n.2, s))
   | ForceRedeem(n) -> ((nil : list(operation)), forceRedeem(n.0, n.1, s))

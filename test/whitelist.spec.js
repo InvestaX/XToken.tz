@@ -47,7 +47,7 @@ describe('Whitelist Functionality', () => {
     const operation = await security.methods.removeFromWhitelist(accounts.bob.pkh).send()
     await operation.confirmation(1)
   })
-  
+
   it('checking if bob is still whitelisted or not', async () => {
     const bobWhitelistId = await getWhiteList(storage, accounts.bob.pkh)
     expect(bobWhitelistId).to.be.undefined
@@ -68,7 +68,7 @@ describe('Whitelist Functionality', () => {
       operation = await security.methods.transfer(alice.pkh, bob.pkh, amounts.transfers[0]).send()
       await operation.confirmation(1)
 
-      assert.fail("")
+      assert.fail('')
     } catch (err) {
       const expected = 'Not in the whitelist'
       assert.equal(err.message, expected)
