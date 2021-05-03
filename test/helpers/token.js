@@ -1,7 +1,7 @@
 const { getConfig } = require('../../config')
 const signer = require('../utils/signer')
 const { MichelsonMap } = require('@taquito/taquito')
-const { char2Bytes } = require('@taquito/tzip16')
+const { char2Bytes } = require('@taquito/utils')
 
 const originate = async (owner) => {
   const { rpc, code } = await getConfig()
@@ -9,11 +9,13 @@ const originate = async (owner) => {
 
   const metadataJSON = {
     name: 'InvestaX Preferred Stock',
-    symbol: 'IXPS'
+    symbol: 'IXPS',
+    decimals: 2
   }
-  const metadataBigMAP = new MichelsonMap()
-  metadataBigMAP.set('', char2Bytes('tezos-storage:here'))
-  metadataBigMAP.set('here', char2Bytes(JSON.stringify(metadataJSON)))
+
+  const metadataBigMap = new MichelsonMap()
+  metadataBigMap.set('', char2Bytes('tezos-storage:contents'))
+  metadataBigMap.set('contents', char2Bytes(JSON.stringify(metadataJSON)))
 
   const origination = await Tezos.contract.originate({
     code,
@@ -24,7 +26,7 @@ const originate = async (owner) => {
       whitelist: new MichelsonMap(),
       admins: new MichelsonMap(),
       lockingList: new MichelsonMap(),
-      metadata: metadataBigMAP
+      metadata: metadataBigMap
     }
   })
 

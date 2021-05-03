@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-const { bytes2Char } = require('@taquito/tzip16')
+const { bytes2Char } = require('@taquito/utils')
 const { getConfig } = require('../config')
 const XTokenTZ = require('./helpers/token')
 
@@ -29,10 +29,11 @@ describe('XToken.tz Origination', () => {
   })
 
   it('must correctly set the token name and symbol in metadata', async () => {
-    const here = await storage.metadata.get('here')
-    const metadata = JSON.parse(bytes2Char(here))
+    const contents = await storage.metadata.get('contents')
+    const metadata = JSON.parse(bytes2Char(contents))
 
     metadata.name.should.equal('InvestaX Preferred Stock')
     metadata.symbol.should.equal('IXPS')
+    metadata.decimals.should.equal(2)
   })
 })
