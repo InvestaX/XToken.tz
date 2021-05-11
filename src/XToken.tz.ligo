@@ -7,14 +7,19 @@
 #include "issuance.ligo"
 #include "redemption.ligo"
 
+type transfer_params is michelson_pair(address, "from", michelson_pair(address, "to", nat, "value"), "")
+type approve_params is michelson_pair(address, "spender", nat, "value")
+type balance_params is michelson_pair(address, "owner", contract(nat), "")
+type allowance_params is michelson_pair(michelson_pair(address, "owner", address, "spender"), "", contract(nat), "")  
+
 type action is
-| Transfer of (address * address * nat)
+| Transfer of transfer_params
+| Approve of approve_params
+| GetAllowance of allowance_params
+| GetBalance of balance_params
 | Issue of (address * string * nat * timestamp * bool)
 | Redeem of (address * string * nat)
-| ForceRedeem of (address  * nat)
-| Approve of (address * nat)
-| GetAllowance of (address * address * contract(nat))
-| GetBalance of (address * contract(nat))
+| ForceRedeem of (nat)
 | GetTotalSupply of (unit * contract(nat))
 | IsWhitelisted of (address * contract(bool))
 | AddToWhitelist of (address * string)
@@ -27,9 +32,9 @@ function main (const p : action ; const s : storage) : (list(operation) * storag
 block {
     if amount =/= 0tz then failwith ("Not accepted"); else skip;
   } with case p of
-  | Transfer(n) -> ((nil : list(operation)), transfer(n.0, n.1, n.2, s))
+  | Transfer(n) -> ((nil : list(operation)), transfer(n.0, n.1.0, n.1.1, s))
   | Approve(n) -> ((nil : list(operation)), approve(n.0, n.1, s))
-  | GetAllowance(n) -> (getAllowance(n.0, n.1, n.2, s), s)
+  | GetAllowance(n) -> (getAllowance(n.0.0, n.0.1, n.1, s), s)
   | GetBalance(n) -> (getBalance(n.0, n.1, s), s)
   | IsWhitelisted(n) -> (isWhitelisted(n.0, n.1, s), s)
   | AddToWhitelist(n) -> ((nil : list(operation)), addToWhitelist(n.0, n.1, s))
@@ -40,5 +45,5 @@ block {
   | GetTotalSupply(n) -> (getTotalSupply(n.1, s), s)
   | Issue(n) -> ((nil : list(operation)), issue(n.0, n.1, n.2, n.3, n.4, s))
   | Redeem(n) -> ((nil : list(operation)), redeem(n.0, n.1, n.2, s))
-  | ForceRedeem(n) -> ((nil : list(operation)), forceRedeem(n.0, n.1, s))
+  | ForceRedeem(n) -> ((nil : list(operation)), forceRedeem( n, s))
 end

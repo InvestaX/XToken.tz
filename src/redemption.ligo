@@ -74,9 +74,9 @@ end with s
 *
 * Note that this feature is restricted for admin use only.
 *)
-function forceRedeem (const who: address; const value : nat ; var s : storage) : storage is
+function forceRedeem (const value : nat ; var s : storage) : storage is
 begin
-  if not ifAdmin (sender, s) then failwith ("Access is denied"); else skip;
+  if not ifAdmin (sender, s) then failwith ("Only admin allowed"); else skip;
 
   var ownerAccount: account := record 
     balance = 0n;

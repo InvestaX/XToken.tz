@@ -58,7 +58,7 @@ list [transaction (ifWhitelisted (account, s), 0tz, contr)];
 *)
 function addToWhitelist(const account : address; const id : string; const s : storage): storage is
 begin
-  if not ifAdmin (sender, s) then failwith ("Access is denied"); else skip;
+  if not ifAdmin (sender, s) then failwith ("Only admin allowed"); else skip;
   if ifWhitelisted (account, s) then failwith ("The specified account is already whitelisted"); else skip;
 
   s.whitelist[account] := id;

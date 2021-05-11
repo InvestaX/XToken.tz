@@ -38,7 +38,7 @@
 *)
 function issue (const who : address; const id : string ; const value : nat ; const releaseDate : timestamp ; const withWhitelist : bool; var s : storage) : storage is
 begin
-  if not ifAdmin (sender, s) then failwith ("Access is denied"); else skip;
+  if not ifAdmin (sender, s) then failwith ("Only admin allowed"); else skip;
 
   if withWhitelist then block {
     s.whitelist[who] := id;

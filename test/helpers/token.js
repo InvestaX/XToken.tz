@@ -8,9 +8,24 @@ const originate = async (owner) => {
   const Tezos = await signer.getSignerFactory(rpc, owner.sk)
 
   const metadataJSON = {
-    name: 'InvestaX Preferred Stock',
-    symbol: 'IXPS',
-    decimals: 2
+    "name": 'InvestaX Preferred Stock',
+    "symbol": 'IXPS',
+    "decimals": 2,
+    "description"   : "Tezos FA1.2 Contract",
+    "license":"InvestaX",
+    "version":"foo.1.4.2",
+        "authors"       : [
+        "InvestaX Team <support@investax.io>"
+    ],
+    "source": {
+      "tools": ["Ligo"],
+   }, 
+    "interfaces"    : [
+        "TZIP-007-2021-04-17",
+        "TZIP-016-2021-04-17"
+    ],
+  
+    
   }
 
   const metadataBigMap = new MichelsonMap()
@@ -26,7 +41,7 @@ const originate = async (owner) => {
       whitelist: new MichelsonMap(),
       admins: new MichelsonMap(),
       lockingList: new MichelsonMap(),
-      metadata: metadataBigMap
+      metadata: metadataBigMap,
     }
   })
 

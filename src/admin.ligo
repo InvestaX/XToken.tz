@@ -59,7 +59,7 @@ end with admin
 *)
 function addAdmin(const account : address; const id : string; const s : storage) : storage is
 begin
-  if not ifAdmin (sender, s) then failwith ("Access is denied"); else skip;
+  if not ifAdmin (sender, s) then failwith ("Only admin allowed"); else skip;
   if ifAdmin (account, s) then failwith ("The specified account is already an admin"); else skip;
 
   s.admins[account] := id;
@@ -75,7 +75,7 @@ end with s
 *)
 function removeAdmin(const account : address; const s : storage) : storage is
 begin
-  if not ifAdmin (sender, s) then failwith ("Access is denied"); else skip;
+  if not ifAdmin (sender, s) then failwith ("Only admin allowed."); else skip;
   if not ifAdmin (account, s) then failwith ("The account you specified is not an admin"); else skip;
 
   remove account from map s.admins;

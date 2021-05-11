@@ -46,7 +46,7 @@ begin
     const src: account = get_force(accountFrom, s.ledger);
 
     // Check that the accountFrom can spend that much
-    if value > src.balance then failwith ("Source balance is too low"); else skip;
+    if value > src.balance then failwith ("Insufficient balance"); else skip;
 
     // Update the accountFrom balance
     // Using the abs function to convert int to nat
@@ -69,13 +69,13 @@ begin
     dst.balance := dst.balance + value;
 
     // Decrease the allowance number if necessary
-    case src.allowances[sender] of
-    | None -> skip
-    | Some (dstAllowance) -> src.allowances[sender] := abs (dstAllowance - value)  // ensure non negative
-    end;
+    if accountFrom =/= sender then block {
+        const allowanceAmount: nat = get_force(sender, src.allowances);
+        if allowanceAmount - value < 0 then failwith ("Allowance amount cannot be negative");
+        else src.allowances[sender] := abs(allowanceAmount - value);
+    } else skip;
 
-    s.ledger[accountFrom] := src;
-    s.ledger[destination] := dst;
+  s.ledger[destination] := dst;
   }
 end with s
 
