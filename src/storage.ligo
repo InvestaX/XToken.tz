@@ -37,4 +37,5 @@ type storage is record
   admins: big_map(address, string);
   lockingList: big_map(address, timestamp);
   metadata : big_map(string, bytes);
+  token_metadata : big_map(nat,(nat * map(string,bytes)));
 end

@@ -34,6 +34,6 @@ describe('XToken.tz Origination', () => {
 
     metadata.name.should.equal('InvestaX Preferred Stock')
     metadata.symbol.should.equal('IXPS')
-    metadata.decimals.should.equal(2)
+    metadata.decimals.should.equal('2')
   })
 })
