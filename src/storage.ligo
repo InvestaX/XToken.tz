@@ -29,15 +29,6 @@ type account is record
   allowances: map(address, nat);
 end
 
- 
-//type token_metadata1 is big_map(nat, (nat * map (string, bytes)));
-
-
-// type token_metadata_record is record [
-//     token_id : nat;
-//     token_info : map(string , bytes) ;
-// ]
-
 type storage is record
   owner: address;
   totalSupply: nat;
@@ -48,21 +39,3 @@ type storage is record
   metadata : big_map(string, bytes);
   token_metadata : big_map(nat,(nat * map(string,bytes)));
 end
-
-
-
-//  token_metadata = Big_map.literal [          (0n, {
-//                                                     token_id = 0n; 
-//                                                     token_info = Map.literal[
-                                                      
-//                                                       ("token 0 gros", 0x7070);
-//                                                       ("token 0 encore", 0x8170)
-//                                                       ]
-//                                                   });
-//                                              (1n, 
-//                                              {
-//                                                token_id = 1n; 
-//                                                token_info = Map.literal[(
-//                                                  "token 1 fieu", 0x4242)]
-//                                              })
-//      ]  }
