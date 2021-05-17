@@ -9,7 +9,7 @@ const config = {
   package: './package.json',
   reporter: 'spec',
   slow: 75,
-  timeout: 5000000,
+  timeout: 50000,
   ui: 'bdd',
   require: './test/helpers/setup.js'
 }

@@ -24,8 +24,6 @@ describe('Digital Security Issuances', () => {
 
   it('must correctly issue digital securities to the specified account', async () => {
     const { alice } = accounts
-    console.log(security.address)
-
     const beneficiary = alice.pkh
     const amount = amounts[0]
     const releaseDate = toUnix(new Date())
