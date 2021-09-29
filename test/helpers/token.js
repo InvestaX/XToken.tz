@@ -42,11 +42,10 @@ const originate = async (owner) => {
 
   const tokenMetaDataFinal = MichelsonMap.fromLiteral({
     0: {
-      0: 0,
-      1: tokenMetaData
+      token_id: 0,
+      token_info: tokenMetaData
     }
   })
-
   const origination = await Tezos.contract.originate({
     code,
     storage: {

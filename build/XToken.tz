@@ -13,7 +13,8 @@
     (pair (pair (pair (big_map %admins address string)
                       (big_map %ledger address (pair (map %allowances address nat) (nat %balance))))
                 (pair (big_map %lockingList address timestamp) (big_map %metadata string bytes)))
-          (pair (pair (address %owner) (big_map %token_metadata nat (pair nat (map string bytes))))
+          (pair (pair (address %owner)
+                      (big_map %token_metadata nat (pair (nat %token_id) (map %token_info string bytes))))
                 (pair (nat %totalSupply) (big_map %whitelist address string)))) ;
   code { LAMBDA
            (pair address
