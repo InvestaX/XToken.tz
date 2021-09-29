@@ -23,6 +23,8 @@
  *
  * All storage variables can be found here.
 **************************************************************************************)
+type token_info is map(string,bytes)
+type token_id is nat
 
 type account is record
   balance : nat;
@@ -37,5 +39,6 @@ type storage is record
   admins: big_map(address, string);
   lockingList: big_map(address, timestamp);
   metadata : big_map(string, bytes);
-  token_metadata : big_map(nat,(nat * map(string,bytes)));
+  token_metadata:  big_map(nat, michelson_pair(token_id, "token_id", token_info, "token_info"));
 end
+
